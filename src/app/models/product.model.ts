@@ -15,3 +15,6 @@ export interface Product {
 export interface createProductDTO extends Omit<Product,'id' | 'category'> {
   categoryId: number, //solo agregamos la categoryID wooooo
 }
+
+export interface updateProductDTO extends Partial<createProductDTO>{ }
+//make al the attributes not necesary i.e. 'id?'

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { createProductDTO, Product } from './../models/product.model';
+import { createProductDTO, updateProductDTO ,Product } from './../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,12 @@ export class ProductsService {
     return this.http.get<Product>(`${this.url}/${id}`);
   }
 
-  create(data: createProductDTO){
-    return this.http.post<Product>(this.url, data);
+  create(dto: createProductDTO){
+    return this.http.post<Product>(this.url, dto);
+  }
+
+  update(dto: updateProductDTO, id: string){
+    return this.http.put<Product>(`${this.url}/${id}`, dto); 
+    //select the id of the product, and send the data via post
   }
 }
