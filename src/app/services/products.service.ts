@@ -29,4 +29,8 @@ export class ProductsService {
     return this.http.put<Product>(`${this.url}/${id}`, dto); 
     //select the id of the product, and send the data via post
   }
+
+  delete(id: string){
+    return this.http.delete<Product>(`${this.url}/${id}`);
+  }
 }

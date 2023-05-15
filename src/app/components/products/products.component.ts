@@ -87,4 +87,15 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  deleteProduct(){
+    const id = this.productChosen.id;
+    this.productsService.delete(id)
+    .subscribe(data => {
+      const productIndex = this.products.findIndex(item => item.id === id);
+      this.products.splice(productIndex, 1);
+      this.showProductDetail = false;
+      console.log('delete', data);
+    })
+  }
+
 }
